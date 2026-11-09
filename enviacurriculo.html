@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>enviacurriculo.htm</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    body {
+      background-color: #525659;
+      padding: 20px 10px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .hoja-cv {
+      background-color: #ffffff;
+      width: 100%;
+      max-width: 800px;
+      padding: 40px 45px;
+      box-shadow: 0 0 12px rgba(0,0,0,0.3);
+      color: #000;
+    }
+
+    h1.titulo {
+      text-align: center;
+      font-size: 20px;
+      font-weight: bold;
+      letter-spacing: 1px;
+      margin-bottom: 25px;
+      text-decoration: none;
+    }
+
+    /* ENCABEZADO: DATOS Y FOTO */
+    .seccion-arriba {
+      display: flex;
+      gap: 20px;
+      margin-bottom: 15px;
+      align-items: flex-start;
+    }
+
+    .bloque-datos-personales {
+      flex: 1;
+    }
+
+    .caja-foto {
+      width: 130px;
+      height: 160px;
+      border: 1.5px solid #000;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      position: relative;
+      background-color: #fafafa;
+    }
+
+    .caja-foto span {
+      font-weight: bold;
+      font-size: 14px;
+      margin-bottom: 8px;
+    }
+
+    .caja-foto input[type="file"] {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+    }
+
+    .caja-foto label {
+      font-size: 11px;
+      color: #555;
+      cursor: pointer;
+      padding: 4px;
+    }
+
+    /* BARRAS DE TÍTULO DE SECCIÓN */
+    .barra-titulo {
+      border: 1.5px solid #000;
+      font-weight: bold;
+      font-size: 13px;
+      padding: 4px 8px;
+      margin-bottom: 12px;
+      text-transform: uppercase;
+      background-color: #fff;
+    }
+
+    /* FILAS Y CAMPOS */
+    .fila {
+      display: flex;
+      align-items: baseline;
+      margin-bottom: 8px;
+      gap: 8px;
+    }
+
+    .fila label {
+      font-size: 13px;
+      font-weight: normal;
+      white-space: nowrap;
+    }
+
+    .linea-relleno {
+      flex: 1;
+      border: none;
+      border-bottom: 1px dotted #000;
+      outline: none;
+      font-size: 13px;
+      background: transparent;
+      padding: 0 4px;
+    }
+
+    .linea-relleno:focus {
+      border-bottom: 1px solid #000;
+    }
+
+    .sub-bloque {
+      margin-left: 20px;
+      margin-bottom: 10px;
+    }
+
+    /* SECCIÓN COMPLEMENTARIOS */
+    .seccion-complementarios {
+      display: flex;
+      gap: 15px;
+      margin-top: 15px;
+      margin-bottom: 15px;
+    }
+
+    .nota-lateral {
+      width: 140px;
+      font-size: 12px;
+      line-height: 1.4;
+      text-align: left;
+    }
+
+    .area-complementarios {
+      flex: 1;
+      border: 1.5px solid #000;
+      height: 100px;
+      padding: 8px;
+      resize: vertical;
+      font-size: 13px;
+      outline: none;
+    }
+
+    /* PIE DE PÁGINA */
+    .declaracion {
+      font-size: 13px;
+      margin-top: 25px;
+      margin-bottom: 35px;
+      text-align: left;
+    }
+
+    .lugar-fecha {
+      display: flex;
+      justify-content: flex-end;
+      align-items: baseline;
+      gap: 8px;
+      margin-bottom: 25px;
+    }
+
+    .lugar-fecha label {
+      font-size: 13px;
+    }
+
+    .lugar-fecha input {
+      width: 250px;
+      border: none;
+      border-bottom: 1px dotted #000;
+      outline: none;
+      font-size: 13px;
+      background: transparent;
+      padding: 0 4px;
+    }
+
+    /* BOTONES */
+    .acciones {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 20px;
+    }
+
+    .btn {
+      padding: 8px 24px;
+      border: 1.5px solid #000;
+      background-color: #f0f0f0;
+      font-size: 13px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .btn:hover {
+      background-color: #ddd;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 600px) {
+      .hoja-cv {
+        padding: 20px 15px;
+      }
+
+      .seccion-arriba {
+        flex-direction: column-reverse;
+        align-items: center;
+      }
+
+      .bloque-datos-personales {
+        width: 100%;
+      }
+
+      .seccion-complementarios {
+        flex-direction: column;
+      }
+
+      .nota-lateral {
+        width: 100%;
+      }
+
+      .lugar-fecha {
+        justify-content: flex-start;
+      }
+
+      .lugar-fecha input {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="hoja-cv">
+    <h1 class="titulo">CURRICULUM VITAE</h1>
+
+    <form action="#" method="POST" enctype="multipart/form-data">
+      
+      <!-- PARTE SUPERIOR: DATOS Y RECUADRO FOTO -->
+      <div class="seccion-arriba">
+        <div class="bloque-datos-personales">
+          <div class="barra-titulo">DATOS PERSONALES</div>
+
+          <div class="fila">
+            <label for="apellidos">Apellidos:</label>
+            <input type="text" id="apellidos" name="apellidos" class="linea-relleno" required>
+          </div>
+
+          <div class="fila">
+            <label for="dni">DNI:</label>
+            <input type="text" id="dni" name="dni" class="linea-relleno" required>
+          </div>
+
+          <div class="fila">
+            <label for="fecha_nac">Fecha De Nacimiento:</label>
+            <input type="date" id="fecha_nac" name="fecha_nac" class="linea-relleno" required>
+          </div>
+
+          <div class="fila">
+            <label for="direccion">Dirección:</label>
+            <input type="text" id="direccion" name="direccion" class="linea-relleno">
+          </div>
+
+          <div class="fila">
+            <label for="localidad">Localidad:</label>
+            <input type="text" id="localidad" name="localidad" class="linea-relleno">
+          </div>
+
+          <div class="fila">
+            <label for="telefono">Teléfono:</label>
+            <input type="tel" id="telefono" name="telefono" class="linea-relleno">
+          </div>
+
+          <div class="fila">
+            <label for="movil">Teléfono Móvil:</label>
+            <input type="tel" id="movil" name="movil" class="linea-relleno">
+          </div>
+
+          <div class="fila">
+            <label for="email">E-Mail:</label>
+            <input type="email" id="email" name="email" class="linea-relleno">
+          </div>
+        </div>
+
+        <div class="caja-foto">
+          <span>FOTO</span>
+          <label for="foto">(Adjuntar)</label>
+          <input type="file" id="foto" name="foto" accept="image/*">
+        </div>
+      </div>
+
+      <!-- FORMACION Y ESTUDIOS -->
+      <div class="barra-titulo">FORMACION Y ESTUDIOS</div>
+
+      <div class="fila">
+        <label for="titulacion">Titulación:</label>
+        <input type="text" id="titulacion" name="titulacion" class="linea-relleno">
+      </div>
+
+      <div class="fila">
+        <label for="idiomas">Idiomas:</label>
+        <input type="text" id="idiomas" name="idiomas" class="linea-relleno">
+      </div>
+
+      <div class="fila">
+        <label for="informatica">Conocimientos informáticos:</label>
+        <input type="text" id="informatica" name="informatica" class="linea-relleno">
+      </div>
+
+      <div class="fila">
+        <label>Cursos y seminarios:</label>
+      </div>
+      <div class="sub-bloque">
+        <div class="fila">
+          <label for="curso_nombre">Nombre:</label>
+          <input type="text" id="curso_nombre" name="curso_nombre" class="linea-relleno">
+        </div>
+        <div class="fila">
+          <label for="curso_lugar">Lugar:</label>
+          <input type="text" id="curso_lugar" name="curso_lugar" class="linea-relleno">
+        </div>
+        <div class="fila">
+          <label for="curso_provincia">Provincia:</label>
+          <input type="text" id="curso_provincia" name="curso_provincia" class="linea-relleno">
+        </div>
+      </div>
+
+      <!-- EXPERIENCIA PROFESIONAL -->
+      <div class="barra-titulo">EXPERIENCIA PROFESIONAL</div>
+
+      <div class="fila">
+        <label for="empresa">Empresa:</label>
+        <input type="text" id="empresa" name="empresa" class="linea-relleno">
+      </div>
+
+      <div class="fila">
+        <label for="fecha_exp">Fecha:</label>
+        <input type="text" id="fecha_exp" name="fecha_exp" class="linea-relleno">
+      </div>
+
+      <div class="fila">
+        <label for="actividad">Puesto/Actividad desarrollada:</label>
+        <input type="text" id="actividad" name="actividad" class="linea-relleno">
+      </div>
+
+      <!-- DATOS COMPLEMENTARIOS -->
+      <div class="barra-titulo" style="margin-top: 15px;">DATOS COMPLEMENTARIOS</div>
+
+      <div class="seccion-complementarios">
+        <div class="nota-lateral">
+          Puede<br>
+          adicionar o<br>
+          complementar<br>
+          los campos que<br>
+          considere<br>
+          necesarios.
+        </div>
+        <textarea id="complementarios" name="complementarios" class="area-complementarios"></textarea>
+      </div>
+
+      <!-- DECLARACION JURADA Y FECHA -->
+      <p class="declaracion">Todo lo expuesto anteriormente podrá ser acreditado, en caso de solicitud.</p>
+
+      <div class="lugar-fecha">
+        <label for="lugar_fecha">(lugar y fecha)</label>
+        <input type="text" id="lugar_fecha" name="lugar_fecha">
+      </div>
+
+      <!-- BOTONES DE ACCIÓN -->
+      <div class="acciones">
+        <button type="reset" class="btn">Limpiar</button>
+        <button type="submit" class="btn">Enviar</button>
+      </div>
+
+    </form>
+  </div>
+
+</body>
+</html>
